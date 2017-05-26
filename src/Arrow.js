@@ -13,7 +13,7 @@ export default class Arrow extends Component {
   }
 
   getAnimationStyle = () => {
-    const animationStyle = this.getAnimationStyleByPosition();
+    const animationStyle = this.getAnimationStyleByPosition(this.props.position);
     if (this.props.isShowing === false) {
       return animationStyle.enter;
     } else {
@@ -24,9 +24,11 @@ export default class Arrow extends Component {
     }
   }
 
-  getAnimationStyleByPosition() {
-    switch (this.props.position) {
+  getAnimationStyleByPosition(position) {
+    switch (position) {
       case 'top':
+      case 'top-left':
+      case 'top-right':
         return {
           enter: {
             transform: 'translate3d(-50%, 0, 0)',
@@ -36,9 +38,11 @@ export default class Arrow extends Component {
           active: {
             transform: 'translate3d(-50%, -5px, 0)'
           }
-        }
+        };
 
       case 'bottom':
+      case 'bottom-left':
+      case 'bottom-right':
         return {
           enter: {
             transform: 'translate3d(-50%, -10px, 0)',
@@ -76,8 +80,11 @@ export default class Arrow extends Component {
           active: {
             transform: 'translate3d(0, -50%, 0)'
           }
-        }
+        };
+
     }
+
+    return {};
 
   }
 
@@ -87,7 +94,7 @@ export default class Arrow extends Component {
       transform: 'translate3d(0, 0, 0)',
       backfaceVisibility: 'hidden',
       willChange: 'transform',
-      transition: `all ${duration} ${easing} ${delay}`,
+      transition: `all ${duration}ms ${easing} ${delay}ms`,
       position: 'absolute',
       boxSizing: 'border-box',
       zIndex: 10,
@@ -102,6 +109,8 @@ export default class Arrow extends Component {
   getArrowStyle = () => {
     switch (this.props.position) {
       case 'top':
+      case 'top-left':
+      case 'top-right':
         return {
           backgroundImage: 'url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2236px%22%20height%3D%2212px%22%3E%3Cpath%20fill%3D%22rgba%2817,%2017,%2017,%200.9%29%22%20transform%3D%22rotate%280%29%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E")',
           height: 6,
@@ -110,6 +119,8 @@ export default class Arrow extends Component {
         };
 
       case 'bottom':
+      case 'bottom-left':
+      case 'bottom-right':
         return {
           backgroundImage: 'url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2236px%22%20height%3D%2212px%22%3E%3Cpath%20fill%3D%22rgba%2817,%2017,%2017,%200.9%29%22%20transform%3D%22rotate%28180%2018%206%29%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E")',
           height: 6,

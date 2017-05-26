@@ -19,7 +19,7 @@ export default class TipContainer extends Component {
       transform: 'translate3d(0, 0, 0)',
       backfaceVisibility: 'hidden',
       willChange: 'transform',
-      transition: `all ${duration} ${easing} ${delay}`,
+      transition: `all ${duration}ms ${easing} ${delay}ms`,
       position: 'absolute',
       zIndex: 10,
       transformOrigin: 'top',
@@ -37,19 +37,21 @@ export default class TipContainer extends Component {
   }
 
   getAnimationStyle = () => {
-    const animationStyle = this.getAnimationStyleByPosition();
+    const animationStyle = this.getAnimationStyleByPosition(this.props.position);
+    let style = null;
     if (this.props.isShowing === false) {
-      return animationStyle.enter;
+      style = animationStyle.enter;
     } else {
-      return {
+      style = {
         ...animationStyle.enter,
         ...animationStyle.active
-      }
+      };
     }
+    return style;
   }
 
-  getAnimationStyleByPosition = () => {
-    switch (this.props.position) {
+  getAnimationStyleByPosition = (position) => {
+    switch (position) {
       case 'top':
         return {
           enter: {
@@ -60,6 +62,30 @@ export default class TipContainer extends Component {
           },
           active: {
             transform: 'translate3d(-50%, -5px, 0)'
+          }
+        };
+
+      case 'top-left':
+        return {
+          enter: {
+            ...this.getAnimationStyleByPosition('top').enter,
+            transform: 'translate3d(calc(-100% + 16px), 0, 0)',
+            bottom: '100%'
+          },
+          active: {
+            transform: 'translate3d(calc(-100% + 16px), -5px, 0)'
+          }
+        };
+
+      case 'top-right':
+        return {
+          enter: {
+            ...this.getAnimationStyleByPosition('top').enter,
+            transform: 'translate3d(calc(0% + -16px), 0, 0)',
+            bottom: '100%'
+          },
+          active: {
+            transform: 'translate3d(calc(0% + -16px), -5px, 0)'
           }
         };
 
@@ -75,6 +101,33 @@ export default class TipContainer extends Component {
           }
         };
 
+
+
+      case 'bottom-left':
+        return {
+          enter: {
+            ...this.getAnimationStyleByPosition('bottom').enter,
+            transform: 'translate3d(calc(-100% + 16px), 0, 0)',
+            top: '100%'
+          },
+          active: {
+            transform: 'translate3d(calc(-100% + 16px), 10px, 0)'
+          }
+        };
+
+      case 'bottom-right':
+        return {
+          enter: {
+            ...this.getAnimationStyleByPosition('bottom').enter,
+            transform: 'translate3d(calc(0% + -16px), 0, 0)',
+            top: '100%'
+          },
+          active: {
+            transform: 'translate3d(calc(0% + -16px), 10px, 0)'
+          }
+        };
+
+
       case 'left':
         return {
           enter: {
@@ -88,7 +141,7 @@ export default class TipContainer extends Component {
           active: {
             transform: 'translate3d(0, -50%, 0)'
           }
-        }
+        };
 
       case 'right':
         return {
@@ -102,7 +155,7 @@ export default class TipContainer extends Component {
           active: {
             transform: 'translate3d(0, -50%, 0)'
           }
-        }
+        };
     }
   }
 
