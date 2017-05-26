@@ -12,7 +12,14 @@ export default class Microtip extends Component {
     easing: PropTypes.string,
     position: PropTypes.string
   };
-  
+
+  static defaultProps = {
+    duration: 180,
+    delay: 0,
+    easing: 'ease-in-out',
+    position: 'top'
+  };
+
   state = {
     isShowing: false
   };
