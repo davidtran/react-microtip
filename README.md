@@ -29,6 +29,7 @@ import Microtip from 'react-microtip';
 
 ## Properties
 | Property | Description | Default value |
+|----------|-------------|---------------|
 | duration | The duration of tooltip transition | 180 |
 | delay    | The delay time before showing the tooltip | 0 |
 | easing   | The easing applied while transitioning the tooltip | ease-in-out |
