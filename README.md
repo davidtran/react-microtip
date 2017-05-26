@@ -1,7 +1,7 @@
 # React Micro Tip
-Minimal, beautiful React tooltip component. Only 3kb minifed and gzip
+Minimal, beautiful React tooltip component. Only 3kb minifed and gzip.
 <p align="center">
-![screen shot 2017-05-26 at 3 54 50 ch](https://cloud.githubusercontent.com/assets/1154740/26487958/cd2ca988-422b-11e7-8daa-ddb56d256f06.png)
+<img src="https://cloud.githubusercontent.com/assets/1154740/26487958/cd2ca988-422b-11e7-8daa-ddb56d256f06.png" alt="React Microtip">
 </p>
 
 ## Installation
