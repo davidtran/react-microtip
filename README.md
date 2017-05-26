@@ -1,32 +1,40 @@
-# Boilerplate for creating React Npm packages with ES2015
+# React Micro Tip
+Minimal, beautiful React tooltip component. Only 3kb minifed and gzip
+![screen shot 2017-05-26 at 3 54 50 ch](https://cloud.githubusercontent.com/assets/1154740/26487958/cd2ca988-422b-11e7-8daa-ddb56d256f06.png)
 
-The package is based on [npm-base](https://github.com/kadirahq/npm-base) package by [Kadira](https://github.com/kadirahq) which is really great when you want to prepare Npm package. This one is prepared to be used as a starter point for React components which needs to be published on Npm.
+## Installation
+*npm*
+```
+npm install react-microtip --save
+```
 
-It includes linting with [ESLint](http://eslint.org/) and testing with [Mocha](https://mochajs.org/), [Enzyme](http://airbnb.io/enzyme/) and [JSDOM](https://github.com/tmpvar/jsdom).
-
-Also there is of course ES6 transpilation.
+*yarn
+```
+yarn add react-microtip --save
+```
 
 ## Usage
+```js
+import Microtip from 'react-microtip';
 
-1. Clone this repo
-2. Inside cloned repo run `npm install && rm -rf .git && git init` and update `package.json` with your package name.
-3. If you want to run tests: `npm test` or `npm run testonly` or `npm run test-watch`. You need to write tests in `__tests__` folder. You need at least Node 4 on your machine to run tests.
-4. If you want to run linting: `npm test` or `npm run lint`. Fix bugs: `npm run lint-fix`. You can adjust your `.eslintrc` config file.
-5. If you want to run transpilation to ES5 in `dist` folder: `npm run prepublish` (standard npm hook).
+<Microtip
+  content={"This tip is nice!"}
+  duration={180}
+  delay={0}
+  easing="ease-in-out"
+  position="top">
+  <div>My Button</div>
+</Microtip>
+```
 
-## CSS and preprocessors
+## Properties
+| Property | Description | Default value |
+| duration | The duration of tooltip transition | 180 |
+| delay    | The delay time before showing the tooltip | 0 |
+| easing   | The easing applied while transitioning the tooltip | ease-in-out |
+| position | The position of tooltip. There are 8 available positions: top, top-left, top-right, bottom, bottom-left, bottom-right, left, right | top |
 
-For more information check out this thread: [#5](https://github.com/juliancwirko/react-npm-boilerplate/issues/5)
+## Credits
+- David Tran [JSLancer.com](http://jslancer.com)
 
-## Blog post about it:
-
-- [Creating React NPM packages with ES2015](http://julian.io/creating-react-npm-packages-with-es2015/)
-
-## Also check out
-
-- [React Alert UI component](https://github.com/juliancwirko/react-s-alert)
-- [React project boilerplate with Webpack, HMR, React Router](https://github.com/juliancwirko/react-boilerplate)
-
-## License
-
-MIT
+This project is inspired by [Microtip](https://github.com/ghosh/microtip) library
