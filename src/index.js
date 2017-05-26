@@ -12,7 +12,7 @@ export default class Microtip extends Component {
     easing: PropTypes.string,
     position: PropTypes.string
   };
-
+  
   state = {
     isShowing: false
   };
